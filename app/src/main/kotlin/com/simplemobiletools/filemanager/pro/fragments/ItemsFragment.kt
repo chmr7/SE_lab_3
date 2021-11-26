@@ -17,6 +17,7 @@ import com.simplemobiletools.commons.views.MyGridLayoutManager
 import com.simplemobiletools.commons.views.MyRecyclerView
 import com.simplemobiletools.filemanager.pro.R
 import com.simplemobiletools.filemanager.pro.activities.MainActivity
+import com.simplemobiletools.filemanager.pro.activities.SettingsActivity
 import com.simplemobiletools.filemanager.pro.activities.SimpleActivity
 import com.simplemobiletools.filemanager.pro.adapters.ItemsAdapter
 import com.simplemobiletools.filemanager.pro.dialogs.CreateNewItemDialog
@@ -32,8 +33,9 @@ import kotlinx.android.synthetic.main.items_fragment.view.*
 import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
+import android.content.Intent
 
-class ItemsFragment : Fragment(), ItemOperationsListener, Breadcrumbs.BreadcrumbsListener {
+class ItemsFragment : Fragment(), ItemOperationsListener, Breadcrumbs.BreadcrumbsListener{
     var currentPath = ""
     var isGetContentIntent = false
     var isGetRingtonePicker = false
@@ -67,10 +69,15 @@ class ItemsFragment : Fragment(), ItemOperationsListener, Breadcrumbs.Breadcrumb
         mView.apply {
             items_swipe_refresh.setOnRefreshListener { refreshItems() }
             items_fab.setOnClickListener { createNewItem() }
+            imageButton2.setOnClickListener {
+                var intent= Intent(context, SettingsActivity::class.java)
+                startActivity(intent) }
             breadcrumbs.listener = this@ItemsFragment
+
+
+
         }
     }
-
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString(PATH, currentPath)
         super.onSaveInstanceState(outState)
@@ -438,6 +445,7 @@ class ItemsFragment : Fragment(), ItemOperationsListener, Breadcrumbs.Breadcrumb
             items_placeholder_2.beGone()
         }
     }
+
 
     private fun createNewItem() {
         CreateNewItemDialog(activity as SimpleActivity, currentPath) {
