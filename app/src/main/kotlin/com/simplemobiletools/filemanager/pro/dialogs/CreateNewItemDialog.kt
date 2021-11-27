@@ -6,14 +6,27 @@ import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.filemanager.pro.R
 import com.simplemobiletools.filemanager.pro.activities.SimpleActivity
 import com.simplemobiletools.filemanager.pro.helpers.RootHelpers
+import kotlinx.android.synthetic.main.dialog_compress_as.view.*
 import kotlinx.android.synthetic.main.dialog_create_new.view.*
 import java.io.File
 import java.io.IOException
+import com.simplemobiletools.commons.helpers.*
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.items_fragment.view.*
+import java.util.*
 
 class CreateNewItemDialog(val activity: SimpleActivity, val path: String, val callback: (success: Boolean) -> Unit) {
     private val view = activity.layoutInflater.inflate(R.layout.dialog_create_new, null)
 
     init {
+        view.apply {
+
+            button.setOnClickListener {
+              //  activity.intent=Intent(context,ChooseOtherFileManager::class.java)
+                //activity.startActivity(activity.intent)
+                ChooseOtherFileManager(activity) }
+
+        }
         AlertDialog.Builder(activity)
                 .setPositiveButton(R.string.ok, null)
                 .setNegativeButton(R.string.cancel, null)
@@ -127,4 +140,5 @@ class CreateNewItemDialog(val activity: SimpleActivity, val path: String, val ca
         alertDialog.dismiss()
         callback(true)
     }
+
 }
