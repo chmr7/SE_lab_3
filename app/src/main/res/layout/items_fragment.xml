@@ -56,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/breadcrumbs"
+                android:layout_marginTop="0dp"
                 android:clipToPadding="false"
                 android:layoutAnimation="@anim/layout_animation"
                 android:scrollbars="none"
@@ -71,16 +72,19 @@
 
                 <include layout="@layout/fastscroller_handle_vertical" />
 
+                <com.simplemobiletools.commons.views.MyFloatingActionButton
+                    android:id="@+id/items_fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="@dimen/activity_margin"
+                    android:backgroundTint="#FF5722"
+                    android:rotationX="0"
+                    android:src="@android:drawable/ic_menu_add"
+                    app:maxImageSize="@dimen/grid_view_icon_size" />
+
             </com.simplemobiletools.commons.views.FastScroller>
         </RelativeLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    <com.simplemobiletools.commons.views.MyFloatingActionButton
-        android:id="@+id/items_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/activity_margin"
-        android:src="@drawable/ic_plus_vector" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
