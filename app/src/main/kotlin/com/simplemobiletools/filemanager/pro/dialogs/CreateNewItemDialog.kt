@@ -21,7 +21,7 @@ class CreateNewItemDialog(val activity: SimpleActivity, val path: String, val ca
     init {
         view.apply {
 
-            button.setOnClickListener {
+            button2.setOnClickListener {
               //  activity.intent=Intent(context,ChooseOtherFileManager::class.java)
                 //activity.startActivity(activity.intent)
                 ChooseOtherFileManager(activity) }
